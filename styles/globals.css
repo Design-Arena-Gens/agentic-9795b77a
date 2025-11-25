@@ -1,0 +1,181 @@
+:root {
+  --bg: #0b0f14;
+  --panel: #121821;
+  --panel-2: #0f141c;
+  --text: #e8eef7;
+  --muted: #9db0c9;
+  --accent: #2fa6ff;
+  --accent-2: #ffce33;
+  --danger: #ff5b6e;
+  --success: #3fd17d;
+  --border: #1c2431;
+}
+
+* { box-sizing: border-box; }
+html, body, #__next { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 320px 1fr 340px;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header header header"
+    "left   main   right";
+  height: 100%;
+}
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, #0e141d, #0b0f14);
+}
+.logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.logo-badge {
+  background: linear-gradient(135deg, var(--accent), #7cc4ff);
+  color: #001522;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.header-actions { display: flex; gap: 8px; }
+.btn {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn.primary {
+  background: linear-gradient(135deg, var(--accent), #7cc4ff);
+  color: #001522;
+  border: none;
+  font-weight: 700;
+}
+.btn.warn {
+  background: linear-gradient(135deg, var(--accent-2), #ffe07a);
+  color: #2a2100;
+  border: none;
+  font-weight: 700;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.left { grid-area: left; border-right: 1px solid var(--border); background: var(--panel); overflow: auto; }
+.right { grid-area: right; border-left: 1px solid var(--border); background: var(--panel); overflow: auto; }
+.main { grid-area: main; display: grid; place-items: center; background: var(--panel-2); }
+
+.section {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section h3 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.control-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.control label { font-size: 13px; color: var(--muted); }
+.input, .select, .range {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #0a1017;
+  color: var(--text);
+  outline: none;
+}
+.range {
+  padding: 0;
+  height: 30px;
+}
+.swatch {
+  width: 26px; height: 26px; border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.inline {
+  display: flex; gap: 8px; align-items: center;
+}
+.hint { color: var(--muted); font-size: 12px; }
+.score {
+  display: flex; gap: 8px; align-items: center;
+  font-weight: 800;
+  font-size: 18px;
+}
+.score .dot { width: 10px; height: 10px; border-radius: 999px; }
+.pill {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #0b1220;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+.suggestion {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #0b111a;
+}
+
+.canvas-wrap {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+.stage-frame {
+  background: #0a0f16;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+.stage-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px; color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    grid-template-areas:
+      "header"
+      "left"
+      "right"
+      "main";
+  }
+}
